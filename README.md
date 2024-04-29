@@ -17,6 +17,15 @@
 
 문제집-[https://github.com/encrypted-def/basic-algo-lecture]
 
+
+
+[문제집](https://github.com/encrypted-def/basic-algo-lecture){: target="_blank"}
+<https://github.com/encrypted-def/basic-algo-lecture>{: target="_blank"}
+<a href="http://example.com/" target="_blank">문제집</a>
+
+
+
+
 # Rule
 본 레포를 포크하시면 됩니다
 
