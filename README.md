@@ -49,6 +49,6 @@ fork된 레포에 커밋을 하면 잔디가 생기지 않습니다
 
 그 후 잔디용 B레포에서 미러커밋을 합니다
 
-https://zrr.kr/GfY4
+참고 - https://zrr.kr/GfY4
 
 
