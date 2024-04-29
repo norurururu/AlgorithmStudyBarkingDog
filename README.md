@@ -5,7 +5,9 @@
 
 10주간 주당 18문제 + 3문제를 풀이할 예정입니다
 
-![image](https://github.com/Brio-yj/algorithm_study/assets/101401582/4ed35617-acfc-4e28-99fb-875caedd3b13)
+
+![Uploading image.png…]()
+
 
 # Reference
 
