@@ -13,9 +13,12 @@ bool pastable(int x, int y){
             }
         }
     }
+
     for (int i=0; i<r; i++){
         for (int j=0; j<c; j++){
-            if (sticker[i][j] == 1) notebook[x+i][y+j] = 1;
+            if (sticker[i][j] == 1){
+                sticker[x+i][y+j] = 1;
+            }
         }
     }
     return true;
