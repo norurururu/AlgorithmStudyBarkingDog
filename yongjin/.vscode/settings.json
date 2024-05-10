@@ -29,5 +29,12 @@
     "editor.suggest.showVariables": false,
     "editor.suggest.showWords": false,
     "editor.suggest.showClasses": false,
-    "editor.suggest.showColors": false
+    "editor.suggest.showColors": false,
+    "files.associations": {
+        "deque": "cpp",
+        "format": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp"
+    }
 }
