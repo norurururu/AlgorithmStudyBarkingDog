@@ -1,47 +1,45 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
-
-vector<vector<int>> vv;
+int cnt[1000001];
+int num[1000001];
 
 int main(){
     int n;
     cin>>n;
-    vv[1].push_back(1);
-    for(int i=2;i<=n;i++){
-        if(i%2==0 && i%3==0){
-            vv[i].push_back(vv[i/3]);
-            vv[i].push_back(vv[i/2]);
-            vv[i].push_back(vv[i-1]);
-            vv[i].push_back(i);
-            sort(vv[i].begin(), vv[i].end());
-            vv[i].erase(unique(vv[i].begin(),vv[i].end()), vv[i].end());
+    cnt[1]=0;
+    cnt[2]=1;
+    cnt[3]=1;
+    num[1]=0;
+    num[2]=1;
+    num[3]=1;
+    for(int i=3;i<=n;i++){
+        if(i%3==0 && i%2==0){
+            cnt[i]=min({cnt[i/3],cnt[i/2],cnt[i-1]})+1;
+            if(cnt[i]==cnt[i/3]+1) num[i]=i/3;
+            if(cnt[i]==cnt[i/2]+1) num[i]=i/2;
+            if(cnt[i]==cnt[i-1]+1) num[i]=i-1;
         }
-        if(i%3==0){
-            vv[i].push_back(vv[i/3]);
-            vv[i].push_back(vv[i-1]);
-            vv[i].push_back(i);
-            sort(vv[i].begin(), vv[i].end());
-            vv[i].erase(unique(vv[i].begin(),vv[i].end()), vv[i].end());
+        else if(i%3==0){
+            cnt[i]=min({cnt[i/3],cnt[i-1]})+1;
+            if(cnt[i]==cnt[i/3]+1) num[i]=i/3;
+            if(cnt[i]==cnt[i-1]+1) num[i]=i-1;
         }
-        if(i%2==0){
-            vv[i].push_back(vv[i/2]);
-            vv[i].push_back(vv[i-1]);
-            vv[i].push_back(i);
-            sort(vv[i].begin(), vv[i].end());
-            vv[i].erase(unique(vv[i].begin(),vv[i].end()), vv[i].end());
+        else if(i%2==0){
+            cnt[i]=min({cnt[i/2],cnt[i-1]})+1;
+            if(cnt[i]==cnt[i/2]+1) num[i]=i/2;
+            if(cnt[i]==cnt[i-1]+1) num[i]=i-1;
         }
         else{
-            vv[i].push_back(vv[i-1]);
-            vv[i].push_back(i);
-            sort(vv[i].begin(), vv[i].end());
-            vv[i].erase(unique(vv[i].begin(),vv[i].end()), vv[i].end());
+            cnt[i]=cnt[i-1]+1;
+            if(cnt[i]==cnt[i-1]+1) num[i]=i-1;
         }
     }
-    if(n%3==0 && n%2==0){cout<<min({vv[n-1].size(),vv[n/2].size(),vv[n/3].size()});}
-    if(n%3==0){cout<<min({vv[n-1].size(),vv[n/3].size()});}
-    if(n%2==0){cout<<min({vv[n-1].size(),vv[n/2].size()});}
-    else{cout<<vv[n-1].size();}
-    for(auto v:vv[n])cout<<v<<" ";
+    cout<<cnt[n]<<"\n";
+    int i=n;
+    while(1){
+        cout<<i<<" ";
+        if(i==1)break;
+        i = num[i];
+    }
 }
