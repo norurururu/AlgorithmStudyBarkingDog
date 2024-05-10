@@ -1,31 +1,28 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <utility>
 #include <vector>
-
 using namespace std;
 
+vector<pair<int,int>> pv;
+int n;
+
+bool cmp2(pair<int, int> a, pair<int, int> b) {
+    if (a.first == b.first) return a.second < b.second;
+    return a.first < b.first;
+}
+
 int main() {
-    int n;
     cin >> n;
-    vector<long long> cards(n);
-    for(int i = 0; i < n; i++) {
-        cin >> cards[i];
+    for (int i = 0; i < n; i++) {
+        int num;
+        cin >> num;
+        auto findNum = find_if(pv.begin(), pv.end(), [num](const pair<int, int>& p) { return p.first == num; });
+        if (findNum != pv.end())
+            (*findNum).second++;
+        else
+            pv.emplace_back(num, 1);
     }
-    sort(cards.begin(), cards.end());
-    long long maxNum = cards[0];
-    int maxCount = 1;
-    int currentCount = 1;
-    for(int i = 1; i < n; i++) {
-        if (cards[i] == cards[i-1]) {
-            currentCount++;
-        } else {
-            currentCount = 1;
-        }
-        if (currentCount > maxCount) {
-            maxCount = currentCount;
-            maxNum = cards[i];
-        }
-    }
-    cout << maxNum << '\n';
-    return 0;
+    sort(pv.begin(), pv.end(), cmp2);
+    cout<<pv[0].first;
 }
